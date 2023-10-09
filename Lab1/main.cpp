@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cctype> //Verifica tipul de caracter
+#include <cctype> 
 using namespace std;
 
 struct Student {
