@@ -1,0 +1,5 @@
+.vs
+.vscode
+output
+CppProperties.json
+main.exe
