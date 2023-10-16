@@ -22,6 +22,6 @@ This is a simple C++ program for managing bank accounts. It allows users to crea
 
 ## Run the program:
 
-./main
+./bank_account
 
 ## Fallow the on-screen prompts to creat and manage a bank account
