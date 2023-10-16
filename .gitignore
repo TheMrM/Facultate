@@ -1,5 +1,4 @@
 .vs
 .vscode
 CppProperties.json
-main.exe
-/output
+**/main.exe
