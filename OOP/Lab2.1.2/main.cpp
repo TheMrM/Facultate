@@ -56,7 +56,7 @@ void Cont::retragere(double suma) {
     if (SOLD >= suma) {
         SOLD -= suma;
     } else {
-        cout << "Insufficient funds" << endl;
+        cout << "Nu aveti suficiente fonduri pentru aceasta operatiune." << endl;
     }
 }
 
