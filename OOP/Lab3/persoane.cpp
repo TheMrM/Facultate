@@ -1,43 +1,51 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class Persoane {
-    private:
-        std::string Nume;
-        int cnp;
-    
-    public:
-        Persoane(const std::string& fNume, int persoanaCNP) : Nume(fNume), cnp(persoanaCNP) {}
+private:
+    std::string Nume;
+    int cnp;
 
-        // Getter methods for accessing the attributes
-        std::string getName() const {
-            return Nume;
-        }
+public:
+    Persoane() : Nume(""), cnp(0) {} // Default constructor
 
-        int getcnp() const {
-            return cnp;
-        }
+    Persoane(const std::string& fNume, int persoanaCNP) : Nume(fNume), cnp(persoanaCNP) {}
+
+    // Getter methods for accessing the attributes
+    std::string getName() const {
+        return Nume;
+    }
+
+    int getcnp() const {
+        return cnp;
+    }
+
+    // Setter methods for modifying the attributes
+    void setName(const std::string& fNume) {
+        Nume = fNume;
+    }
+
+    void setcnp(int persoanaCNP) {
+        cnp = persoanaCNP;
+    }
 };
 
-void setName(Persoane& persoana, const std::string& fNume){
-    persoana.Nume = fNume;
-}
+int main() {
+    Persoane person;
 
-void setcnp(Persoane& persoana, int persoanaCNP){
-    persoana.cnp = persoanaCNP
-}
+    cout << "Enter the name: ";
+    string name;
+    getline(cin, name); // Allowing for spaces in the name
+    person.setName(name);
 
-int main(){
-void Persoane::getName(){
-    cout<<"Introduceti numele: "<<endl;
-    cin>>Nume;
-}
+    cout << "Enter the CNP: ";
+    int cnp;
+    cin >> cnp;
+    person.setcnp(cnp);
 
-void Persoane::getcnp(){
-    cout<<"Introduceti CNP"<<endl;
-    cin>>cnp;
-}
+    cout << "Name: " << person.getName() << endl;
+    cout << "CNP: " << person.getcnp() << endl;
 
-
+    return 0;
 }
