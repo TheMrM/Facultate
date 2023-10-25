@@ -1,6 +1,18 @@
 #include <iostream>
 #include <cstdlib>
+#include <cctype>
+#include <iomanip>
+#include <cstdint>
 using namespace std;
+
+bool isNumeric(const string &input) {
+    for (char c : input) {
+        if (!isdigit(c) && c != '.' && c != ',') {
+            return false;
+        }
+    }
+    return true;
+}
 
 struct Cont {
     private:
@@ -63,6 +75,7 @@ void Cont::retragere(double suma) {
 int main() {
     int OptiunePrimara, OptiuneCont, OptiuneNumarCont, OptiuneSold;
     double DobandaSold = 0.0;
+    int64_t SOLD = 0;
     Cont cont; // Create an instance of the Cont struct
 
     while (OptiunePrimara != 3) {
@@ -81,6 +94,8 @@ int main() {
                 cin >> OptiuneCont;
 
                 if (OptiuneCont == 1) {
+                    cout << fixed;
+                    cout << setprecision(3);
                     cout << "Sold-ul disponibil este " << cont.getSold() << " $" << endl;
                 } else if (OptiuneCont == 2) {
                     int OptiuneSold = 0;
@@ -93,11 +108,20 @@ int main() {
                         cin >> OptiuneSold;
 
                         if (OptiuneSold == 1) {
+                            string input;
                             double suma;
                             cout << "Introduceti suma pe care doriti sa o depuneti: ";
-                            cin >> suma;
-                            cont.depunere(suma);
-                            cout << "Sold-ul disponibil este acum " << cont.getSold() << "$" << endl;
+                            cin >> input;
+
+                            if(isNumeric(input)){
+                                suma = stod(input);
+                                cont.depunere(suma);
+                                cout << fixed;
+                                cout << setprecision(0);
+                                cout << "Sold-ul disponibil este acum " << cont.getSold() << "$" << endl;
+                            } else {
+                                cout << "Ati introdus date gresite!" << endl;
+                            }
                         } else if (OptiuneSold == 2) {
                             double suma;
                             cout << "Introduceti suma pe care doriti sa o retrageti: ";
@@ -109,6 +133,9 @@ int main() {
                             cin >> DobandaSold;
                             double dobanda = (DobandaSold / 100.0) * cont.getSold();
                             double newBalance = cont.getSold() + dobanda;
+                            cout << fixed;
+                            cout << setprecision(0);
+                            cout.imbue(locale(""));
                             cout << "Dobanda procentuala de " << DobandaSold << " % din soldul curent " << cont.getSold() << "$ este " << dobanda << " $"<< endl;
                             cout << "Sold-ul disponibil este acum " << newBalance << " $" << endl;
                             cont.setSold(newBalance);
@@ -147,11 +174,18 @@ int main() {
                         cin >> OptiuneSold;
 
                         if (OptiuneSold == 1) {
+                            string input;
                             double suma;
                             cout << "Introduceti suma pe care doriti sa o depuneti: ";
-                            cin >> suma;
-                            cont.depunere(suma);
-                            cout << "Sold-ul disponibil este acum " << cont.getSold() << "$" << endl;
+                            cin >> input;
+
+                            if(isNumeric(input)){
+                                suma = stod(input);
+                                cont.depunere(suma);
+                                cout << "Sold-ul disponibil este acum " << cont.getSold() << "$" << endl;
+                            } else {
+                                cout << "Ati introdus date gresite!" << endl;
+                            }
                         } else if (OptiuneSold == 2) {
                             double suma;
                             cout << "Introduceti suma pe care doriti sa o retrageti: ";
