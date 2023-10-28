@@ -3,11 +3,10 @@
 
 const int MAX_SIZE = 100;
 
-// Function for addition
 void Add(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     int carry = 0;
     int max_size = std::max(size_a, size_b);
-    size_s = max_size + 1; // Ensure enough space for carry
+    size_s = max_size + 1; 
 
     for (int i = 0; i < max_size; i++) {
         int sum = carry;
@@ -28,7 +27,6 @@ void Add(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s
     }
 }
 
-// Function for subtraction
 void Sub(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     int borrow = 0;
     int max_size = std::max(size_a, size_b);
@@ -58,7 +56,6 @@ void Sub(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s
     }
 }
 
-// Function for multiplication
 void Mul(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     size_s = size_a + size_b;
     std::memset(s, 0, size_s * sizeof(int));
@@ -82,50 +79,40 @@ int main() {
     int a[MAX_SIZE], b[MAX_SIZE], result[MAX_SIZE];
     int size_a, size_b, size_result;
 
-    // Citirea dimensiunii primului număr de la utilizator
     std::cout << "Introduceti dimensiunea primului numar: ";
     std::cin >> size_a;
 
-    // Citirea elementelor primului număr de la utilizator
     std::cout << "Introduceti elementele primului numar: ";
     for (int i = 0; i < size_a; i++) {
         std::cin >> a[i];
     }
 
-    // Citirea dimensiunii celui de-al doilea număr de la utilizator
     std::cout << "Introduceti dimensiunea celui de-al doilea numar: ";
     std::cin >> size_b;
 
-    // Citirea elementelor celui de-al doilea număr de la utilizator
     std::cout << "Introduceti elementele celui de-al doilea numar: ";
     for (int i = 0; i < size_b; i++) {
         std::cin >> b[i];
     }
 
-    // Apelarea funcției de adunare
     Add(a, size_a, b, size_b, result, size_result);
 
-    // Afișarea rezultatului adunării
     std::cout << "Rezultatul adunarii: ";
     for (int i = 0; i < size_result; i++) {
         std::cout << result[i] << " ";
     }
     std::cout << std::endl;
 
-    // Apelarea funcției de scădere
     Sub(a, size_a, b, size_b, result, size_result);
 
-    // Afișarea rezultatului scăderii
     std::cout << "Rezultatul scaderii: ";
     for (int i = 0; i < size_result; i++) {
         std::cout << result[i] << " ";
     }
     std::cout << std::endl;
 
-    // Apelarea funcției de înmulțire
     Mul(a, size_a, b, size_b, result, size_result);
 
-    // Afișarea rezultatului înmulțirii
     std::cout << "Rezultatul inmultirii: ";
     for (int i = 0; i < size_result; i++) {
         std::cout << result[i] << " ";
