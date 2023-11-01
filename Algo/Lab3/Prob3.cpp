@@ -1,11 +1,13 @@
 #include <iostream>
 #include <cstring>
 
+using namespace std;
+
 const int MAX_SIZE = 100;
 
 void Add(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     int carry = 0;
-    int max_size = std::max(size_a, size_b);
+    int max_size = max(size_a, size_b);
     size_s = max_size + 1; 
 
     for (int i = 0; i < max_size; i++) {
@@ -29,7 +31,7 @@ void Add(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s
 
 void Sub(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     int borrow = 0;
-    int max_size = std::max(size_a, size_b);
+    int max_size = max(size_a, size_b);
     size_s = max_size;
 
     for (int i = 0; i < max_size; i++) {
@@ -58,7 +60,7 @@ void Sub(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s
 
 void Mul(const int* a, int size_a, const int* b, int size_b, int* s, int& size_s) {
     size_s = size_a + size_b;
-    std::memset(s, 0, size_s * sizeof(int));
+    memset(s, 0, size_s * sizeof(int));
 
     for (int i = 0; i < size_a; i++) {
         int carry = 0;
@@ -79,45 +81,45 @@ int main() {
     int a[MAX_SIZE], b[MAX_SIZE], result[MAX_SIZE];
     int size_a, size_b, size_result;
 
-    std::cout << "Introduceti dimensiunea primului numar: ";
-    std::cin >> size_a;
+    cout << "Introduceti dimensiunea primului numar: ";
+    cin >> size_a;
 
-    std::cout << "Introduceti elementele primului numar: ";
+    cout << "Introduceti elementele primului numar: ";
     for (int i = 0; i < size_a; i++) {
-        std::cin >> a[i];
+        cin >> a[i];
     }
 
-    std::cout << "Introduceti dimensiunea celui de-al doilea numar: ";
-    std::cin >> size_b;
+    cout << "Introduceti dimensiunea celui de-al doilea numar: ";
+    cin >> size_b;
 
-    std::cout << "Introduceti elementele celui de-al doilea numar: ";
+    cout << "Introduceti elementele celui de-al doilea numar: ";
     for (int i = 0; i < size_b; i++) {
-        std::cin >> b[i];
+        cin >> b[i];
     }
 
     Add(a, size_a, b, size_b, result, size_result);
 
-    std::cout << "Rezultatul adunarii: ";
+    cout << "Rezultatul adunarii: ";
     for (int i = 0; i < size_result; i++) {
-        std::cout << result[i] << " ";
+        cout << result[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     Sub(a, size_a, b, size_b, result, size_result);
 
-    std::cout << "Rezultatul scaderii: ";
+    cout << "Rezultatul scaderii: ";
     for (int i = 0; i < size_result; i++) {
-        std::cout << result[i] << " ";
+        cout << result[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     Mul(a, size_a, b, size_b, result, size_result);
 
-    std::cout << "Rezultatul inmultirii: ";
+    cout << "Rezultatul inmultirii: ";
     for (int i = 0; i < size_result; i++) {
-        std::cout << result[i] << " ";
+        cout << result[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     return 0;
 }

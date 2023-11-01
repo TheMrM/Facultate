@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 class Marfa {
     static int CodGestiune;
 
@@ -15,7 +17,7 @@ int main() {
     int cod;
     cod = Marfa::SchimbaGestiune();
 
-    std::cout << "Codul de gestiune este " << cod <<std::endl;
+    cout << "Codul de gestiune este " << cod <<endl;
 
     return 0;
 }

@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class ProdusAlimentar {
     static int CotaTVA;
     static int CodGestiune;
     const int Cod;
-    std::string denumire;
+    string denumire;
     double pret;
     int cantitate;
     double valoare;
 
 public:
-    ProdusAlimentar(const std::string& nume, double p, int c)
+    ProdusAlimentar(const string& nume, double p, int c)
         : Cod(CodGestiune), denumire(nume), pret(p), cantitate(c) {
         double valoareFaraTVA = pret * cantitate;
         valoare = valoareFaraTVA + valoareFaraTVA * CotaTVA / 100;
@@ -21,7 +23,7 @@ public:
         return ++CodGestiune;
     }
 
-    std::string getDenumire() {
+    string getDenumire() {
         return denumire;
     }
 
@@ -42,27 +44,27 @@ int ProdusAlimentar::CodGestiune = 1;
 int ProdusAlimentar::CotaTVA = 19;
 
 int main() {
-    std::string denumire;
+    string denumire;
     double pret;
     int cantitate;
 
-    std::cout << "Introduceti denumirea: ";
-    std::cin >> denumire;
+    cout << "Introduceti denumirea: ";
+    cin >> denumire;
 
-    std::cout << "Introduceti pretul: ";
-    std::cin >> pret;
+    cout << "Introduceti pretul: ";
+    cin >> pret;
 
-    std::cout << "Introduceti cantitatea: ";
-    std::cin >> cantitate;
+    cout << "Introduceti cantitatea: ";
+    cin >> cantitate;
 
     ProdusAlimentar produs(denumire, pret, cantitate);
     int cod = ProdusAlimentar::getSchimbaGestiune();
 
-    std::cout << "Codul de gestiune este " << cod << std::endl;
-    std::cout << "Denumire produs: " << produs.getDenumire() << std::endl;
-    std::cout << "Pret: " << produs.getPret() << std::endl;
-    std::cout << "Cantitate: " << produs.getCantitate() << std::endl;
-    std::cout << "Valoare: " << produs.getValoare() << std::endl;
+    cout << "Codul de gestiune este " << cod << endl;
+    cout << "Denumire produs: " << produs.getDenumire() << endl;
+    cout << "Pret: " << produs.getPret() << endl;
+    cout << "Cantitate: " << produs.getCantitate() << endl;
+    cout << "Valoare: " << produs.getValoare() << endl;
 
     return 0;
 }

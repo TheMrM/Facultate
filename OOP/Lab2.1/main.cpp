@@ -2,6 +2,8 @@
 #include "CONT_BANCAR.h"
 #include "FUNCTII.cpp"
 
+using namespace std;
+
 int main() {
     CONT_BANCAR* myAccount = new CONT_BANCAR;
 
@@ -9,49 +11,49 @@ int main() {
     double balance;
     float interestRate;
 
-    std::cout << "Introdu numarul contului: ";
-    std::cin >> accountNumber;
+    cout << "Introdu numarul contului: ";
+    cin >> accountNumber;
     myAccount->setAccountNumber(accountNumber);
 
-    std::cout << "Introdu soldul initial: $";
-    std::cin >> balance;
+    cout << "Introdu soldul initial: $";
+    cin >> balance;
     myAccount->setBalance(balance);
 
-    std::cout << "Introdu procentajul dobanzii: ";
-    std::cin >> interestRate;
+    cout << "Introdu procentajul dobanzii: ";
+    cin >> interestRate;
     interestRate /= 100.0; //Converteste din procentaj in fractie
     myAccount->setInterestRate(interestRate);
     
-    std::cout << "Numarul contului: " << myAccount->getAccountNumber() << std::endl;
-    std::cout << "Sold: " << myAccount->getBalance() << std::endl;
-    std::cout << "Dobanda: " << myAccount->getInterestRate() << " %"<< std::endl;
+    cout << "Numarul contului: " << myAccount->getAccountNumber() << endl;
+    cout << "Sold: " << myAccount->getBalance() << endl;
+    cout << "Dobanda: " << myAccount->getInterestRate() << " %"<< endl;
 
     double interest = myAccount->calculateInterest();
-    std::cout << "Sold castigat: $" << interest << std::endl;
+    cout << "Sold castigat: $" << interest << endl;
 
     double depositAmount;
-    std::cout << "Introdu suma pe care o depozitezi: $";
-    std::cin >> depositAmount;
+    cout << "Introdu suma pe care o depozitezi: $";
+    cin >> depositAmount;
     myAccount->deposit(depositAmount);
 
     double withdrawAmount;
     bool validWithdrawl = false;
 
     do {
-        std::cout << "Introdu suma pe care o retragi: $";
-        std::cin >> withdrawAmount;
+        cout << "Introdu suma pe care o retragi: $";
+        cin >> withdrawAmount;
 
         if (withdrawAmount > myAccount->getBalance()) {
-            std::cout << "Suma depaseste soldul contului. Va rugam incercati din nou" << std::endl;
+            cout << "Suma depaseste soldul contului. Va rugam incercati din nou" << endl;
         } else if (withdrawAmount <= 0) {
-            std::cout << "Suma introdusa nu este valida. Va rugam incercati din nou" << std::endl;
+            cout << "Suma introdusa nu este valida. Va rugam incercati din nou" << endl;
         } else {
             validWithdrawl = true; //suma introdusa este valida
             myAccount->withdraw(withdrawAmount);
         }
     } while (!validWithdrawl);
 
-    std::cout << "Update sold: $" << myAccount->getBalance() << std::endl;
+    cout << "Update sold: $" << myAccount->getBalance() << endl;
 
     delete myAccount;
 

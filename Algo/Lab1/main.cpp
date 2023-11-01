@@ -4,8 +4,10 @@
 #include <fstream>
 #include <algorithm>
 
-void ReadArrayIntegerFromFile(int *x, int *n, std::string file) {
-    std::ifstream inputFile(file);
+using namespace std;
+
+void ReadArrayIntegerFromFile(int *x, int *n, string file) {
+    ifstream inputFile(file);
     if (inputFile.is_open()) {
         inputFile >> *n;
         for (int i = 0; i < *n; i++) {
@@ -13,12 +15,12 @@ void ReadArrayIntegerFromFile(int *x, int *n, std::string file) {
         }
         inputFile.close();
     } else {
-        std::cerr << "Eroare la deschiderea fișierului " << file << std::endl;
+        cerr << "Eroare la deschiderea fișierului " << file << endl;
     }
 }
 
-void WriteArrayIntegerToFile(int *x, int *n, std::string file) {
-    std::ofstream outputFile(file);
+void WriteArrayIntegerToFile(int *x, int *n, string file) {
+    ofstream outputFile(file);
     if (outputFile.is_open()) {
         outputFile << *n << "\n";
         for (int i = 0; i < *n; i++) {
@@ -26,12 +28,12 @@ void WriteArrayIntegerToFile(int *x, int *n, std::string file) {
         }
         outputFile.close();
     } else {
-        std::cerr << "Eroare la deschiderea fișierului " << file << std::endl;
+        cerr << "Eroare la deschiderea fișierului " << file << endl;
     }
 }
 
-void ReadArrayFloatFromFile(float *x, int *n, std::string file) {
-    std::ifstream inputFile(file);
+void ReadArrayFloatFromFile(float *x, int *n, string file) {
+    ifstream inputFile(file);
     if (inputFile.is_open()) {
         inputFile >> *n;
         for (int i = 0; i < *n; i++) {
@@ -39,12 +41,12 @@ void ReadArrayFloatFromFile(float *x, int *n, std::string file) {
         }
         inputFile.close();
     } else {
-        std::cerr << "Eroare la deschiderea fișierului " << file << std::endl;
+        cerr << "Eroare la deschiderea fișierului " << file << endl;
     }
 }
 
-void WriteArrayFloatToFile(float *x, int *n, std::string file) {
-    std::ofstream outputFile(file);
+void WriteArrayFloatToFile(float *x, int *n, string file) {
+    ofstream outputFile(file);
     if (outputFile.is_open()) {
         outputFile << *n << "\n";
         for (int i = 0; i < *n; i++) {
@@ -52,7 +54,7 @@ void WriteArrayFloatToFile(float *x, int *n, std::string file) {
         }
         outputFile.close();
     } else {
-        std::cerr << "Eroare la deschiderea fișierului " << file << std::endl;
+        cerr << "Eroare la deschiderea fișierului " << file << endl;
     }
 }
 
@@ -76,7 +78,7 @@ int BinarySearch(int *x, int *n, int elem) {
 }
 
 void QuickSort(int *x, int *n) {
-    std::sort(x, x + *n);
+    sort(x, x + *n);
 }
 
 int MinMax(int *x, int *n, int MinMax) {
@@ -85,9 +87,9 @@ int MinMax(int *x, int *n, int MinMax) {
     }
 
     if (MinMax == 0) {
-        return *std::min_element(x, x + *n); // Calculează minimul
+        return *min_element(x, x + *n); // Calculează minimul
     } else if (MinMax == 1) {
-        return *std::max_element(x, x + *n); // Calculează maximul
+        return *max_element(x, x + *n); // Calculează maximul
     } else {
         return 0; // Valoare MinMax nevalidă
     }
@@ -99,9 +101,9 @@ float MinMax(float *x, int *n, int MinMax) {
     }
 
     if (MinMax == 0) {
-        return *std::min_element(x, x + *n); // Calculează minimul
+        return *min_element(x, x + *n); // Calculează minimul
     } else if (MinMax == 1) {
-        return *std::max_element(x, x + *n); // Calculează maximul
+        return *max_element(x, x + *n); // Calculează maximul
     } else {
         return 0.0; // Valoare MinMax nevalidă
     }
@@ -128,11 +130,11 @@ int main() {
     float minFloat = MinMax(floatArray, &floatArraySize, 0);
     float maxFloat = MinMax(floatArray, &floatArraySize, 1);
 
-    std::cout << "Minimul din șirul de intregi: " << minInt << std::endl;
-    std::cout << "Maximul din șirul de intregi: " << maxInt << std::endl;
+    cout << "Minimul din șirul de intregi: " << minInt << endl;
+    cout << "Maximul din șirul de intregi: " << maxInt << endl;
 
-    std::cout << "Minimul din șirul de numere reale: " << minFloat << std::endl;
-    std::cout << "Maximul din șirul de numere reale: " << maxFloat << std::endl;
+    cout << "Minimul din șirul de numere reale: " << minFloat << endl;
+    cout << "Maximul din șirul de numere reale: " << maxFloat << endl;
 
     return 0;
 }

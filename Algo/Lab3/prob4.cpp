@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 int ElementK(int k) {
     int x = 0;
     int sum = 0;
@@ -14,11 +16,11 @@ int ElementK(int k) {
 
 int main() {
     int k;
-    std::cout << "Introduceti valoarea lui k: ";
-    std::cin >> k;
+    cout << "Introduceti valoarea lui k: ";
+    cin >> k;
 
     int result = ElementK(k);
-    std::cout << "Al " << k << "-lea element este: " << result << std::endl;
+    cout << "Al " << k << "-lea element este: " << result << endl;
 
     return 0;
 }

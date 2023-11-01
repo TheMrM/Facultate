@@ -4,16 +4,16 @@ using namespace std;
 
 class Persoane {
 private:
-    std::string Nume;
+    string Nume;
     int cnp;
 
 public:
     Persoane() : Nume(""), cnp(0) {} // Default constructor
 
-    Persoane(const std::string& fNume, int persoanaCNP) : Nume(fNume), cnp(persoanaCNP) {}
+    Persoane(const string& fNume, int persoanaCNP) : Nume(fNume), cnp(persoanaCNP) {}
 
     // Getter methods for accessing the attributes
-    std::string getName() const {
+    string getName() const {
         return Nume;
     }
 
@@ -22,7 +22,7 @@ public:
     }
 
     // Setter methods for modifying the attributes
-    void setName(const std::string& fNume) {
+    void setName(const string& fNume) {
         Nume = fNume;
     }
 

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class CoffeeItem {
 public:
-    CoffeeItem(std::string name, std::string size, double price) : name(name), size(size), price(price) {}
+    CoffeeItem(string name, string size, double price) : name(name), size(size), price(price) {}
 
-    std::string getName() {
+    string getName() {
         return name;
     }
 
@@ -13,27 +15,27 @@ public:
         return price;
     }
 
-    std::string getSize() {
+    string getSize() {
         return size;
     }
 
 private:
-    std::string name;
-    std::string size;
+    string name;
+    string size;
     double price;
 };
 
 class Customer {
 private:
-    std::string name;
+    string name;
     int loyaltyPoints;
     double totalAmountSpent;
     CoffeeItem coffeeItem;
 
 public:
-    Customer(std::string name, int loyaltyPoints) : name(name), loyaltyPoints(loyaltyPoints), totalAmountSpent(0.0), coffeeItem("Unkown", "Unknown", 0.0) {}
+    Customer(string name, int loyaltyPoints) : name(name), loyaltyPoints(loyaltyPoints), totalAmountSpent(0.0), coffeeItem("Unkown", "Unknown", 0.0) {}
 
-    std::string getName() {
+    string getName() {
         return name;
     }
 
@@ -45,7 +47,7 @@ public:
         return totalAmountSpent;
     }
 
-    std::string getCoffeeItemName() {
+    string getCoffeeItemName() {
         return coffeeItem.getName();
     }
 
@@ -66,10 +68,10 @@ void placeOrder(Customer& customer, CoffeeItem& coffee) {
 }
 
 int main() {
-    std::string name;
+    string name;
     
-    std::cout << "Introdu nume: ";
-    std::cin >> name;
+    cout << "Introdu nume: ";
+    cin >> name;
 
     Customer customer(name);
 
@@ -77,16 +79,16 @@ int main() {
     bool wantAnotherCoffee = true;
 
     while (wantAnotherCoffee) {
-        std::cout << "Selecteaza cafeaua:\n";
-        std::cout << "1. Cappuccino (S) - 4.99 RON\n";
-        std::cout << "2. Cappuccino (M) - 2.99 RON\n";
-        std::cout << "3. Cappuccino (L) - 2.99 RON\n";
-        std::cout << "4. Espresso (S) - 2.99 RON\n";
-        std::cout << "5. Espresso (M) - 2.99 RON\n";
-        std::cout << "6. Espresso (L) - 2.99 RON\n";
-        std::cout << "0. Exit\n";
-        std::cout << "Introdu optiune: ";
-        std::cin >> coffeeChoice;
+        cout << "Selecteaza cafeaua:\n";
+        cout << "1. Cappuccino (S) - 4.99 RON\n";
+        cout << "2. Cappuccino (M) - 2.99 RON\n";
+        cout << "3. Cappuccino (L) - 2.99 RON\n";
+        cout << "4. Espresso (S) - 2.99 RON\n";
+        cout << "5. Espresso (M) - 2.99 RON\n";
+        cout << "6. Espresso (L) - 2.99 RON\n";
+        cout << "0. Exit\n";
+        cout << "Introdu optiune: ";
+        cin >> coffeeChoice;
 
 
         if (coffeeChoice >= 1 && coffeeChoice <= 6) {
@@ -100,15 +102,15 @@ int main() {
             };
         placeOrder(customer, coffeeOptions[coffeeChoice - 1]);
 
-        std::cout << "Numele clientului: " << customer.getName() << std::endl;
-        std::cout << "Puncte de loialitate totale: " << customer.getLoyaltyPoints() << std::endl;
-        std::cout << "Suma totala cheltuita: " << customer.getTotalAmountSpent() << " RON" << std::endl;
-        std::cout << "Comanda de cafea: " << customer.getCoffeeItemName() << std::endl;
+        cout << "Numele clientului: " << customer.getName() << endl;
+        cout << "Puncte de loialitate totale: " << customer.getLoyaltyPoints() << endl;
+        cout << "Suma totala cheltuita: " << customer.getTotalAmountSpent() << " RON" << endl;
+        cout << "Comanda de cafea: " << customer.getCoffeeItemName() << endl;
 
-        std::cout <<"Mai vrei o cafea? (1 - Da | 2 - Nu)";
-        std::cin >> wantAnotherCoffee;
+        cout <<"Mai vrei o cafea? (1 - Da | 2 - Nu)";
+        cin >> wantAnotherCoffee;
     } else if (coffeeChoice != 0) {
-        std::cout << "Optiunea de cafea aleasa nu este valida." << std::endl;
+        cout << "Optiunea de cafea aleasa nu este valida." << endl;
     }
  }
 

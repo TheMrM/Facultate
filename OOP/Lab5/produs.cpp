@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 class Produs {
     static int serialNumber; 
 
@@ -18,7 +20,7 @@ int main() {
     
     for (int i = 0; i < 5; i++){
         ij = Serial.getSerialNumber();
-        std::cout << "Product series " << ij << std::endl;
+        cout << "Product series " << ij << endl;
     }
 
    return 0;
