@@ -15,7 +15,7 @@ public:
     void afis()
     {   
         cout<<denumire;
-        cout<<"\n produsul :"<< denumire << " " <<cod<<" "<<pret<<" "<<cantitate<<" "<<cotaTVA<<" cu valoare calculata" <<valoare;
+        cout<<"\n produsul : "<< denumire << " " <<cod<<" "<<pret<<" "<<cantitate<<" "<<cotaTVA<<" cu valoare calculata "<< " " <<valoare<<endl;
     }
     static void ModificaTVA(int nouacotaTVA)
     {
@@ -38,7 +38,7 @@ int main()
 {
     ProdusAlimentar baneasa;
     ProdusAlimentar margarina("Rama",12,13,1000);
-    ProdusAlimentar  ciocolata("Milka",123,20, 300);
+    ProdusAlimentar  ciocolata("Milka",123,20,300);
 baneasa.afis();
 margarina.afis();
 ciocolata.afis();
