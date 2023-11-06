@@ -72,10 +72,11 @@ int main() {
     
     cout << "Introdu nume: ";
     cin >> name;
+    cin.ignore();
 
-    Customer customer(name);
+    Customer customer(name, 0);
 
-    int coffeeChoice;
+    int coffeeChoice, anotherOne;
     bool wantAnotherCoffee = true;
 
     while (wantAnotherCoffee) {
@@ -90,6 +91,9 @@ int main() {
         cout << "Introdu optiune: ";
         cin >> coffeeChoice;
 
+        if (coffeeChoice == 0) {
+            break;
+        }
 
         if (coffeeChoice >= 1 && coffeeChoice <= 6) {
             CoffeeItem coffeeOptions[] = {
@@ -108,7 +112,10 @@ int main() {
         cout << "Comanda de cafea: " << customer.getCoffeeItemName() << endl;
 
         cout <<"Mai vrei o cafea? (1 - Da | 2 - Nu)";
-        cin >> wantAnotherCoffee;
+        cin >> anotherOne;
+        if (anotherOne == 2) {
+            wantAnotherCoffee = false;
+        }
     } else if (coffeeChoice != 0) {
         cout << "Optiunea de cafea aleasa nu este valida." << endl;
     }
