@@ -67,6 +67,21 @@ void placeOrder(Customer& customer, CoffeeItem& coffee) {
     }
 }
 
+void LoyalityPointsChecker(Customer& customer, CoffeeItem& coffee) {
+    int loyalityPoints = customer.getLoyaltyPoints();
+    double price = coffee.getPrice();
+
+    if (loyalityPoints <= 5) {
+        price -= price * 2.5;
+    } else if (loyalityPoints <= 8) {
+        price -= price * 5;
+    } else if (loyalityPoints <= 10) {
+        price -= price * 7.5;
+    }
+
+    coffee.setPrice(price);
+}
+
 int main() {
     string name;
     
