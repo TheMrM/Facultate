@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 class BinarySearch {
     public:
-        static int binary(const std::vector<int>& arr, int target) {
+        static int binary(const vector<int>& arr, int target) {
             int left = 0;
             int right = arr.size() - 1;
 
@@ -26,20 +28,20 @@ class BinarySearch {
 };
 
 int main() {
-    std::vector<int> arr = {1,4,8,11,19,20,21,29,39,40};
+    vector<int> arr = {1,4,8,11,19,20,21,29,39,40};
     int target = 29;
 
-    std::cout << "Array for searching "<< target << std::endl;
+    cout << "Array for searching "<< target << endl;
     for (int num : arr) {
-        std::cout << num << " ";
+        cout << num << " ";
     }
 
     int result = BinarySearch::binary(arr, target);
 
     if (result != 1) {
-        std::cout << "\nElment found at index "<< result << "." << std::endl;
+        cout << "\nElment found at index "<< result << "." << endl;
     } else {
-        std::cout << "\nElement not found." << std::endl;
+        cout << "\nElement not found." << endl;
     }
 
     return 0;
