@@ -10,7 +10,6 @@ private:
 public:
     Complex(float real = 0.0, float imaginary = 0.0) : Re(real), Im(imaginary) {}
 
-    // Addition operator overloading
     Complex operator + (const Complex& other) {
         Complex result;
         result.Re = Re + other.Re;
@@ -18,7 +17,6 @@ public:
         return result;
     }
 
-    // Subtraction operator overloading
     Complex operator - (const Complex& other) {
         Complex result;
         result.Re = Re - other.Re;
@@ -26,7 +24,6 @@ public:
         return result;
     }
 
-    // Multiplication operator overloading
     Complex operator * (const Complex& other) {
         Complex result;
         result.Re = Re * other.Re - Im * other.Im;
@@ -34,7 +31,6 @@ public:
         return result;
     }
 
-    // Division operator overloading
     Complex operator / (const Complex& other) {
         Complex result;
         float denominator = other.Re * other.Re + other.Im * other.Im;
