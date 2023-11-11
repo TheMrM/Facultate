@@ -56,19 +56,19 @@ int main() {
     c2.display();
 
     c3 = c1 + c2;
-    cout << "Addition Result: ";
+    cout << "Adunare: ";
     c3.display();
 
     c4 = c1 - c2;
-    cout << "Subtraction Result: ";
+    cout << "Scadere: ";
     c4.display();
 
     c5 = c1 * c2;
-    cout << "Multiplication Result: ";
+    cout << "Inmultire: ";
     c5.display();
 
     c6 = c1 / c2;
-    cout << "Division Result: ";
+    cout << "Impartire: ";
     c6.display();
 
     return 0;
