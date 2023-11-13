@@ -2,8 +2,13 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
+#include <thread>
+#include <sstream>
 
 using namespace std;
+
+void printWithDelay(const string& message, int dealyMilliseconds);
 
 class Caracter {
     private:
@@ -17,7 +22,9 @@ class Caracter {
             this->DEF = DEF;
         }
     void printHero() {
-        cout << "Eroul nostru " << name << " isi incepe aventura, plin de viata LIFE:" << HP << " cu o putere nemaivazuta pana acuma AttackPower:" << AP << endl;
+        ostringstream message;
+        message << "Eroul nostru " << name << " isi incepe aventura, plin de viata LIFE:" << HP << " cu o putere nemaivazuta pana acuma AttackPower:" << AP;
+        printWithDelay(message.str(), 40);
     }
 
     string getName() const {
@@ -39,6 +46,12 @@ class Caracter {
     int getDEF() const {
         return DEF;
     }
+
+    void printStats() {
+        ostringstream stats;
+        stats << name << " - Health: " << HP << ", Attack Power: " << AP << ", Defense: " << DEF;
+        printWithDelay(stats.str(), 40);
+    }
 };
 
 class Item {
@@ -51,7 +64,9 @@ class Item {
             this->itemAP = itemAP;
         }
     void printItem() {
-        cout << "Arma: " << itemName << ", daune: " << itemAP << endl;
+        ostringstream message;
+        message << "Arma: " << itemName << ", daune: " << itemAP;
+        printWithDelay(message.str(), 40);
     }
 
     string getItemName() const {
@@ -96,17 +111,32 @@ class Game {
         void setEnemyHP(int newHP) {
             enemyHP = newHP;
         }
+        void printStats() {
+            ostringstream stats;
+            stats << enemyType << " - Health: " << enemyHP << ", Attack Power: " << enemyAP << ", Defense: " << enemyDEF;
+            printWithDelay(stats.str(), 40);
+        }
 };
 
 
+void printWithDelay(const string& message, int dealyMilliseconds) {
+    for (char ch : message) {
+        cout << ch << flush;
+        this_thread::sleep_for(chrono::milliseconds(dealyMilliseconds));
+    }
+    cout << endl;
+}
 
 void printAdventureStart(const Caracter& hero, const Item& item1, const Item& item2) {
-    cout << "Aventurierul nostru " << hero.getName() << " porneste in aventura echipat cu " << item1.getItemName() << " si " << item2.getItemName() << " capabile sa il ajute sa rapuna orice provocare a fortelor malefice va intalni" << endl;
+    ostringstream messageStream;
+    messageStream << "Aventurierul nostru " << hero.getName() << " porneste in aventura echipat cu " << item1.getItemName() << " si " << item2.getItemName() << " capabile sa il ajute sa rapuna orice provocare a fortelor malefice va intalni";
+    printWithDelay(messageStream.str(), 40);
 }
 
 void printPrimaLupta(const Caracter& hero, const Game& orc) {
-    cout << hero.getName() << " a pornit la drum dar nu a mers prea departe pe drumuri laturalnice primejdia il paste" << endl;
-    cout << "In calea lui un " << orc.getEnemyType() << " se arata, iar batalia incepe" << endl;
+    ostringstream messageStream;
+    messageStream << hero.getName() << " a pornit la drum dar nu a mers prea departe pe drumuri laturalnice primejdia il paste\n" << "In calea lui un " << orc.getEnemyType() << " se arata, iar batalia incepe";
+    printWithDelay(messageStream.str(), 40);
 }
 
 void luptaCuOrc(Caracter& hero, const Item& item1, Game& orc) {
@@ -118,6 +148,7 @@ void luptaCuOrc(Caracter& hero, const Item& item1, Game& orc) {
         int damageToOrc = max(0, totalAttackPower - orc.getEnemyDef());
         orc.setEnemyHP(orc.getEnemyHP() - damageToOrc);
         cout << hero.getName() << " ataca cu " << item1.getItemName() << ", a dat dauna " << damageToOrc << " puncte la orc!" << endl;
+        orc.printStats();
 
         if (orc.getEnemyHP() <= 0) {
             cout << "Orcul a fost invins!" << endl;
@@ -129,6 +160,7 @@ void luptaCuOrc(Caracter& hero, const Item& item1, Game& orc) {
         int damageToHero = max(0, totalOrcAttackPower - hero.getDEF());
         hero.setHp(hero.getHP() - damageToHero);
         cout << "Orcul ataca miseleste, a dat " << damageToHero << " daune eroului " << hero.getName() << "!" << endl;
+        hero.printStats();
 
         if (hero.getHP() <= 0) {
             cout << hero.getName() << " a fost invins de catre orc!" << endl;
@@ -144,7 +176,7 @@ int main() {
     Item item1("Sabia Luminii", 4);
     Item item2("Arcul suierator", 2);
 
-    Game orc("Orc", 20, 3, 1);
+    Game orc("Orc", 20, 30, 1);
     Game strigoi("Strigoi", 5, 5, 5);
 
     hero.printHero();
