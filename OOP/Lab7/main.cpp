@@ -1,17 +1,20 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 class Caracter {
     private:
         string name;
-        int HP, AP;
+        int HP, AP, DEF;
     public:
-        Caracter(string name,int HP,int AP){
+        Caracter(string name,int HP,int AP, int DEF){
             this->name = name;
             this->HP = HP;
             this->AP = AP;
+            this->DEF = DEF;
         }
     void printHero() {
         cout << "Eroul nostru " << name << " isi incepe aventura, plin de viata LIFE:" << HP << " cu o putere nemaivazuta pana acuma AttackPower:" << AP << endl;
@@ -19,6 +22,22 @@ class Caracter {
 
     string getName() const {
         return name;
+    }
+
+    void setHp(int newHP) {
+        HP = newHP;
+    }
+
+    int getHP() const {
+        return HP;
+    }
+
+    int getAP() const {
+        return AP;
+    }
+
+    int getDEF() const {
+        return DEF;
     }
 };
 
@@ -38,21 +57,102 @@ class Item {
     string getItemName() const {
         return itemName;
     }
+
+    int getItemAP() const {
+        return itemAP;
+    }
 };
+
+class Game {
+    private:
+        string enemyType;
+        int enemyHP;
+        int enemyAP;
+        int enemyDEF;
+    public:
+        Game(string enemyType, int enemyHP, int enemyAP, int enemyDEF) {
+            this->enemyType = enemyType;
+            this->enemyHP = enemyHP;
+            this->enemyAP = enemyAP;
+            this->enemyDEF = enemyDEF;
+        }
+
+        string getEnemyType() const {
+            return enemyType;
+        }
+
+        int getEnemyHP() {
+            return enemyHP;
+        }
+
+        int getEnemyAP() {
+            return enemyAP;
+        }
+
+        int getEnemyDef() {
+            return enemyDEF;
+        }
+
+        void setEnemyHP(int newHP) {
+            enemyHP = newHP;
+        }
+};
+
+
 
 void printAdventureStart(const Caracter& hero, const Item& item1, const Item& item2) {
     cout << "Aventurierul nostru " << hero.getName() << " porneste in aventura echipat cu " << item1.getItemName() << " si " << item2.getItemName() << " capabile sa il ajute sa rapuna orice provocare a fortelor malefice va intalni" << endl;
 }
 
+void printPrimaLupta(const Caracter& hero, const Game& orc) {
+    cout << hero.getName() << " a pornit la drum dar nu a mers prea departe pe drumuri laturalnice primejdia il paste" << endl;
+    cout << "In calea lui un " << orc.getEnemyType() << " se arata, iar batalia incepe" << endl;
+}
+
+void luptaCuOrc(Caracter& hero, const Item& item1, Game& orc) {
+    while (hero.getHP() > 0 && orc.getEnemyHP() > 0) {
+        
+        int heroRandomFactor = rand() % 5;
+        int totalAttackPower = hero.getAP() + item1.getItemAP() + heroRandomFactor;
+
+        int damageToOrc = max(0, totalAttackPower - orc.getEnemyDef());
+        orc.setEnemyHP(orc.getEnemyHP() - damageToOrc);
+        cout << hero.getName() << " ataca cu " << item1.getItemName() << ", a dat dauna " << damageToOrc << " puncte la orc!" << endl;
+
+        if (orc.getEnemyHP() <= 0) {
+            cout << "Orcul a fost invins!" << endl;
+            break;
+        }
+
+        int orcRandomFactor = rand() % 5;
+        int totalOrcAttackPower = orc.getEnemyAP() + orcRandomFactor;
+        int damageToHero = max(0, totalOrcAttackPower - hero.getDEF());
+        hero.setHp(hero.getHP() - damageToHero);
+        cout << "Orcul ataca miseleste, a dat " << damageToHero << " daune eroului " << hero.getName() << "!" << endl;
+
+        if (hero.getHP() <= 0) {
+            cout << hero.getName() << " a fost invins de catre orc!" << endl;
+            break;
+        }
+    }
+}
+
 int main() {
-    Caracter hero("Harap Alb", 100, 5);
+    srand(static_cast<unsigned int>(time(0)));
+
+    Caracter hero("Harap Alb", 100, 5, 10);
     Item item1("Sabia Luminii", 4);
     Item item2("Arcul suierator", 2);
+
+    Game orc("Orc", 20, 3, 1);
+    Game strigoi("Strigoi", 5, 5, 5);
 
     hero.printHero();
     item1.printItem();
     item2.printItem();
     printAdventureStart(hero, item1, item2);
+    printPrimaLupta(hero, orc);
+    luptaCuOrc(hero, item1, orc);
 
     return 0;
 }
