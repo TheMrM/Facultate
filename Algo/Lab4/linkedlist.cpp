@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -7,106 +9,91 @@ public:
     int data;
     Node* next;
 
-    Node(int data) {
-        this->data = data;
-        this->next = nullptr;
-    }
+    Node(int val) : data(val), next(nullptr) {}
 };
 
 class LinkedList {
-private:
+public:
     Node* head;
 
-public:
-    LinkedList() {
-        head = nullptr;
-    }
+    LinkedList() : head(nullptr) {}
 
-    void append(int data) {
-        Node* newNode = new Node(data);
-        if (head == nullptr) {
-            head = newNode;
-        } else {
-            Node* current = head;
-            while (current->next != nullptr) {
-                current = current->next;
-            }
-            current->next = newNode;
-        }
-    }
-
-    void display() {
-        Node* current = head;
-        while (current != nullptr) {
-            std::cout << current->data << " -> ";
-            current = current->next;
-        }
-        std::cout << "nullptr" << std::endl;
-    }
-
-    void  remove(int data) {
-        if (head == nullptr) {
-            return;
-        }
-
-        if (head->data == data) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
-            return;
-        }
-
-        Node* current = head;
-        while (current->next != nullptr && current->next->data != data) {
-            current = current->next;
-        }
-
-        if (current->next != nullptr) {
-            Node* temp = current->next;
-            current->next = current->next->next;
-            delete temp;
-        }
-    }
-
-    int search(int data) {
-        int position = 1;
-        Node* current = head;
-        while (current != nullptr)
-        {
-            if (current->data == data) {
-                return position;
-            }
-            current = current->next;
-            position++;
-        }
-
-        return -1;
-        
-    }
+    void Inserare(Node* cursor, int info);
+    void Stergere(Node* cursor, int* info);
+    Node* Parcurgere(int info);
+    void Afisare();
 };
 
+void LinkedList::Inserare(Node* cursor, int info) {
+    Node* newNode = new Node(info);
+    if (cursor == nullptr) {
+        newNode->next = head;
+        head = newNode;
+    } else {
+        newNode->next = cursor->next;
+        cursor->next = newNode;
+    }
+}
+
+void LinkedList::Stergere(Node* cursor, int* info) {
+    if (head == nullptr) return;
+
+    Node* toDelete;
+    if (cursor == nullptr) {
+        toDelete = head;
+        head = head->next;
+    } else {
+        if (cursor->next == nullptr) return;
+        toDelete = cursor->next;
+        cursor->next = cursor->next->next;
+    }
+
+    *info = toDelete->data;
+    delete toDelete;
+}
+
+Node* LinkedList::Parcurgere(int info) {
+    Node* current = head;
+    while (current != nullptr) {
+        if (current->data == info)
+            return current;
+        current = current->next;
+    }
+    return nullptr;
+}
+
+void LinkedList::Afisare() {
+    Node* current = head;
+    while (current != nullptr) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+    cout << endl;
+}
+
 int main() {
-    LinkedList myList;
+    LinkedList lista;
+    srand(time(nullptr));
 
-    myList.append(1);
-    myList.append(2);
-    myList.append(3);
-    myList.append(4);
+    for (int i = 0; i < 10; i++) {
+        int numarAleatoriu = rand() % 100;
+        lista.Inserare(lista.head, numarAleatoriu);
+    }
 
-    myList.display();
+    cout << "Lista dupa inserarea numerelor aleatorii: ";
+    lista.Afisare();
 
-    int searchData = 3;
-    int position = myList.search(searchData);
+    int info;
+    lista.Stergere(nullptr, &info);
+    cout << "Nodul sters are valoarea: " << info << endl;
+    lista.Afisare();
 
-    if (position != -1) {
-        cout << "Data " << searchData << " found at position " << position << endl;
-        } else {
-            cout << "Data " << searchData << " not found in list " << endl;
-        }
-    myList.remove(3);
-    myList.remove(1);
-    
-    myList.display();
+    Node* found = lista.Parcurgere(10);
+    if (found != nullptr) {
+        cout << "Nodul gasit are valoarea: " << found->data << endl;
+    } else {
+        cout << "Nodul nu a fost gasit." << endl;
+    }
 
     return 0;
 }
