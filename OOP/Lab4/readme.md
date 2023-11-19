@@ -1,4 +1,4 @@
-# Coffee Shop Application
+# CoffeeMachine Application
 
 ## Overview
 This application simulates a basic coffee shop ordering system. It allows customers to place orders for different types of coffee, tracks the total amount spent, and calculates loyalty points based on the size of the coffee ordered. After each order, a receipt is printed, displaying the customer's name, the total amount spent, the loyalty points earned, and the details of the coffee order.
