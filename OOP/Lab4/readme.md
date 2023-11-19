@@ -13,11 +13,11 @@ This application simulates a basic coffee shop ordering system. It allows custom
 ## Compilation and Execution
 This application is written in C++. To compile and run the program, you will need a C++ compiler like `g++`. 
 
-1. Save the code in a file named `coffee_shop.cpp`.
+1. Save the code in a file named `CoffeeMachine.cpp`.
 2. Open a terminal or command prompt.
-3. Navigate to the directory containing `coffee_shop.cpp`.
-4. Compile the program: 'g++ CoffeeMachine.cpp -o coffee_shop'
-5. Run the executable: './coffee_shop'
+3. Navigate to the directory containing `CoffeeMachine.cpp`.
+4. Compile the program: `g++ CoffeeMachine.cpp -o coffee_shop`
+5. Run the executable: `./coffee_shop`
 
 
 ## Usage Example
