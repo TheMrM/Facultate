@@ -2,24 +2,30 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
-string prenume[] = {"Andrei", "Maria", "Alexandru", "Elena", "Ion", "Ioana", "Mihai", "Andreea", "George", "Laura"};
-string nume[] = {"Popa", "Popescu", "Dumitrescu", "Stan", "Stoica", "Ionescu", "Nistor", "Marin", "Tudor", "Dima"};
-string ocupatie[] = {"IT Specialist","Inginer","Profesor","Vanzator","Contabil","Fermier","Antreprenor","Sudor","Farmacist","Taximetrist"};
-string medicType[] = {"Cardiolog", "Neurolog", "Pediatru", "Oncolog", "Dermatolog"};
+vector<string> names = {"Andrei", "Maria", "Alexandru", "Elena", "Ion", "Ioana", "Mihai", "Andreea", "George", "Laura"};
+vector<string> surnames = {"Popa", "Popescu", "Dumitrescu", "Stan", "Stoica", "Ionescu", "Nistor", "Marin", "Tudor", "Dima"};
+vector<string> occupations = {"IT Specialist","Inginer","Profesor","Vanzator","Contabil","Fermier","Antreprenor","Sudor","Farmacist","Taximetrist"};
+vector<string> medicTypes = {"Cardiolog", "Neurolog", "Pediatru", "Oncolog", "Dermatolog"};
+
+string getRandomElement(const vector<string>& vec) {
+    return vec[rand() % vec.size()];
+}
+
 class Medic {
     string nume;
     string prenume;
     string medicType;
 
-    public:
-        Medic() {
-            nume = nume[rand() % (sizeof(nume) / sizeof(string))];
-            prenume = prenume[rand() % (sizeof(prenume) / sizeof(string))];
-            medicType = medicType[rand() % (sizeof(medicType) / sizeof(string))];
-        }
+public:
+    Medic() : nume(getRandomElement(surnames)), prenume(getRandomElement(names)), medicType(getRandomElement(medicTypes)) {}
+
+    string getMedicInfo() const {
+        return "Dr. " + nume + " " + prenume + ", Specializare: " + medicType;
+    }
 };
 
 class Pacient {
@@ -27,10 +33,22 @@ class Pacient {
     string prenume;
     string ocupatie;
 
-    public:
-        Pacient() {
-            nume = nume[rand() % (sizeof(nume) / sizeof(string))];
-            prenume = prenume[rand() % (sizeof(prenume) / sizeof(string))];
-            ocupatie = ocupatie[rand() % (sizeof(ocupatie) / sizeof(string))];
-        }
+public:
+    Pacient() : nume(getRandomElement(surnames)), prenume(getRandomElement(names)), ocupatie(getRandomElement(occupations)) {}
+
+    string getPacientInfo() const {
+        return "Pacient " + nume + " " + prenume + ", Ocupatia: " + ocupatie;
+    }
 };
+
+int main() {
+    srand(time(NULL));
+
+    Medic doctor1;
+    cout << doctor1.getMedicInfo() << endl;
+
+    Pacient pacient1;
+    cout << pacient1.getPacientInfo() << endl;
+
+    return 0;
+}
