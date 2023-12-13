@@ -169,6 +169,37 @@ void luptaCuOrc(Caracter& hero, const Item& item1, Game& orc) {
     }
 }
 
+void luptaCuStrigoi(Caracter& hero, const Item& item2, Game& strigoi) {
+    while (hero.getHP() > 0 && strigoi.getEnemyHP() > 0) {
+        
+        int heroRandomFactor = rand() % 5;
+        int totalAttackPower = hero.getAP() + item2.getItemAP() + heroRandomFactor;
+
+        int damageToStrigoi = max(0, totalAttackPower - strigoi.getEnemyDef());
+        strigoi.setEnemyHP(strigoi.getEnemyHP() - damageToStrigoi);
+        cout << hero.getName() << " ataca cu " << item2.getItemName() << ", a dat dauna " << damageToStrigoi << " puncte la strigoi!" << endl;
+        strigoi.printStats();
+
+        if (strigoi.getEnemyHP() <= 0) {
+            cout << "Strigoiul a fost invins!" << endl;
+            break;
+        }
+
+        int strigoiRandomFactor = rand() % 5;
+        int totalStrigoiAttackPower = strigoi.getEnemyAP() + strigoiRandomFactor;
+        int damageToHero = max(0, totalStrigoiAttackPower - hero.getDEF());
+        hero.setHp(hero.getHP() - damageToHero);
+        cout << "Strigoiul ataca cu putere, a dat " << damageToHero << " daune eroului " << hero.getName() << "!" << endl;
+        hero.printStats();
+
+        if (hero.getHP() <= 0) {
+            cout << hero.getName() << " a fost invins de catre strigoi!" << endl;
+            break;
+        }
+    }
+}
+
+
 int main() {
     srand(static_cast<unsigned int>(time(0)));
 
@@ -185,6 +216,8 @@ int main() {
     printAdventureStart(hero, item1, item2);
     printPrimaLupta(hero, orc);
     luptaCuOrc(hero, item1, orc);
+    printPrimaLupta(hero, strigoi);
+    luptaCuStrigoi(hero, item2, strigoi);
 
     return 0;
 }
