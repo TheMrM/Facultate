@@ -1,0 +1,20 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header {
+    background-color: #FF8400;
+    display: flexbox;
+    width: 100%;
+}
+
+.header-image {
+    width: 100px;
+    height: 100px;
+}
+
+.header-title {
+
+}
