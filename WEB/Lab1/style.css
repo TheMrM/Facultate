@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"');
+
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 header {
     background-color: #FF8400;
-    display: flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
     width: 100%;
 }
 
@@ -16,5 +24,286 @@ header {
 }
 
 .header-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
 
+.nav-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links ul li {
+    display: inline;
+}
+
+.nav-links ul li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000000;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.nav-links ul li a:hover {
+    color: #036daa;
+}
+
+.article {
+    background-image: url('https://evenimente.uab.ro/hackathon/wp-content/uploads/sites/3/2024/01/bkg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 800px;
+}
+
+.content {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.content h2,
+.content p {
+    color: #D9D9D9;
+    width: 50%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.content h2 {
+    margin-top: 20px;
+    font-size: 65px;
+    font-weight: bold;
+}
+
+
+.content button {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #D9D9D9;
+    background-color: #FF8400;
+    border: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.content button:hover {
+    transform: scale(1.1);
+    background-color: #036daa;
+    color: #ffffff;
+}
+
+.detalii-concurs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FF8400;
+    font-size: medium;
+}
+
+.detalii-concurs .regulament {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+.detalii-concurs .regulament > div {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.detalii-concurs .regulament > div > h2 {
+    text-transform: uppercase;
+}
+
+.detalii-concurs .regulament > div + div {
+    margin-left: 20px;
+}
+
+.detalii-concurs .regulament-complet {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.detalii-concurs .regulament-complet p > span {
+    color: #036daa;
+}
+
+.detalii-concurs .regulament-complet p > span:hover {
+    cursor: pointer;
+    color: #000000;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FF8400;
+}
+
+.calendar > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar > div > h2 {
+    text-transform: uppercase;
+}
+
+.continut {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.pair {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.pair > h4,
+.pair > p {
+    margin: 0;
+}
+
+.detalii-concurs::after,
+.calendar::before {
+    content: ' ';
+    display: block;
+    width: 70%;
+    height: .5px;
+    background-color: #ffffff;
+}
+
+.lista-firme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista-firme h4 {
+    text-transform: uppercase;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel .fa-chevron-left,
+.carousel .fa-chevron-right {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    color: #000000;
+}
+
+.icoane-firme {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 50%;
+    margin-right: 10px;
+}
+
+.icoane-firme img {
+    height: 200px;
+    width: 200px;
+    object-fit: scale-down;
+    margin-right: 10px;
+}
+
+.carousel-dots {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.active-dot {
+    background-color: #717171;
+}
+
+footer {
+    background-color: #090F1F;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+footer img {
+    height: auto;
+    width: auto;
+}
+
+
+@media (max-width: 1080px) {
+   header {
+    font-size: 10px;
+   }
+
+   .header-image {
+    scale: 0.6;
+   } 
+
+   .nav-links ul li a {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+   }
+
+   .nav-links ul li a:hover{
+    color: #036daa;
+   }
+
+   .article {
+    height: auto;
+   }
+
+   .content {
+    height: auto;
+    margin: 0, 10;
+    padding: 0;
+   }
+
+   .content h2 {
+    font-size: 2.5vh;
+   }
+
+   .detalii-concurs {
+    display: flex;
+    font-size: 15px;
+    margin: 0, 10;
+    padding: 0;
+   }
 }
