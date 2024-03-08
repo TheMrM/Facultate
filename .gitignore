@@ -1,9 +1,10 @@
 .vs
 .vscode
+*.exe
 CppProperties.json
 **/main.exe
 **/output/output_float_matrix.txt
 **/output/utput_int_matrix.txt
 **/output/loat_output.txt
 **/output/nteger_output.txt
-**/output/
+**/build/
