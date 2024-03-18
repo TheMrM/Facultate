@@ -33,7 +33,7 @@ void adaugaDuplicat(Node **cap, int val)
 
 int main()
 {
-    FILE *f = fopen("lista2.txt", "r");
+    FILE *f = fopen("output/lista2.txt", "r");
     if (f == NULL)
     {
         printf("Nu sa putut crea fisierul\n");

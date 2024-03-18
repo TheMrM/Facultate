@@ -44,7 +44,7 @@ int findHighestNumber(Node *head)
 
 int main()
 {
-    FILE *f = fopen("lista.txt", "r");
+    FILE *f = fopen("output/lista.txt", "r");
     if (f == NULL)
     {
         printf("File can't be opened\n");

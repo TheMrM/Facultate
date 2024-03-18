@@ -50,7 +50,7 @@ void findHighestAndLowest(Node *head, int *highest, int *lowest)
 
 int main()
 {
-    FILE *f = fopen("lista3.txt", "r");
+    FILE *f = fopen("output/lista3.txt", "r");
     if (f == NULL)
     {
         printf("File can't open\n");
