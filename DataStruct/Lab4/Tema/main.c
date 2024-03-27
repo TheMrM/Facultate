@@ -321,15 +321,17 @@ int main() {
     printList(originalList, 0); // Print the modified list without annotations
 
     // Case 2: List after inserting a copy of prime numbers after each prime number
-    printf("\nList after inserting a copy of prime numbers after each prime number:\n");
+    printf("\nSecond linked list with prime number:\n");
     printListWithPrimes(modifiedList1); // Print the list with prime numbers annotated
     insertAfterPrime(modifiedList1); // Insert a copy of prime numbers after each prime number
+    printf("\nLinked list after we insert duplicate of prime numbers:\n");
     printListWithPrimes(modifiedList1); // Print the modified list with annotations
 
     // Case 3: List after subtracting 1 from even elements and inserting before even elements
-    printf("\nList after subtracting 1 from even elements and inserting before even elements:\n");
+    printf("\nLinked list with even elements:\n");
     printListBeforeInsertingBeforeEven(modifiedList2); // Print the list before modification
     insertBeforeEvenElements(&modifiedList2); // Subtract 1 from even elements and insert before even elements
+    printf("\nLinked list when we insert before even elements the 2k-1:\n");
     printListBeforeInsertingBeforeEven(modifiedList2); // Print the modified list with annotations
     
     return 0;
