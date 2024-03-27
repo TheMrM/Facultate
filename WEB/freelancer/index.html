@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portofoliul meu</title>
+	<link rel="stylesheet" type="text/css" href="stil.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d3c3cc0b54.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</head>
+<body>
+	<div id="wrapper">
+		
+		<!-- navigare desktop -->
+		<header>
+			<img src="images/design.png"> <!--site logo -->
+			<nav id="desktop">
+				<ul>
+					<li><a href="#wrapper">Home</a></li>
+					<li><a href="#servicii">Servicii</a></li>
+					<li><a href="#portofoliu">Portofoliu</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+			 <div id="nav-trigger"><a href="#" onclick="toggleMenu()"><i class="fa fa-bars fa-2x" aria-hidden="true" ></i></a></div>
+            <nav id="mobile">
+            	<a href="#" onclick="toggleMenu()"><i class="fa fa-bars fa-2x" aria-hidden="true" ></i></a>
+
+    			<ul>
+    				<li><a href="#wrapper">Home</a></li>
+					<li><a href="#servicii">Servicii</a></li>
+					<li><a href="#portofoliu">Portofoliu</a></li>
+					<li><a href="#contact">Contact</a></li>
+    			</ul>
+    		</nav>
+		</header>
+
+		<!--navigare mobile -->
+
+		<!-- hero section -->
+		<section id="hero">
+			<div id="content-hero">
+				<button onclick="testPHP()" style="width: 60px; height: 30px">
+					Test
+				</button>
+				<h1>Ciprian Cucu</h1>
+				<h2>Programator & designer web.</h2><h2> Full stack dev - HTML5, CSS3, JS, PHP & MySql. Python wrangler, framework slahser, cat enthusiast. </h2>
+			</div>
+			<div id="image-hero">
+				&nbsp;
+			</div>
+		</section>
+
+		<script>
+			function testPHP() {
+				fetch('/var/mysql/test/imagini/development.jpeg') // Make sure the path to the PHP file is correct.
+						.then(response => response.text())
+						.then(data => {
+							alert(data); // Show the response from the PHP script in an alert box.
+						})
+						.catch((error) => {
+							console.error('Error:', error);
+						});
+			}
+		</script>
+
+		<!-- section servicii -->
+		<section id="servicii">
+			<h1>Servicii oferite</h1>
+			<div class="row">
+				<article>
+					<header>
+						<img src="images/design.png">
+						<h2>Design grafic</h2>
+					</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. </p>
+					
+				</article>
+				<article>
+					<header>
+						<img src="images/design.png">
+						<h2>Dezvoltare front-end</h2>
+					</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. </p>
+					
+				</article>
+				<article>
+					<header>
+						<img src="images/design.png">
+						<h2>Dezvoltare back-end</h2>
+					</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. </p>
+					
+				</article>
+			</div>
+		</section>
+
+		<!-- sectiune portofoliu -->
+		<h1>Portofoliu</h1>
+		<section id="portofoliu">
+			<article>
+				<header>
+					<h4>UAB.RO</h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Full website</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>ELIT</h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Branding & catalog</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>TECHNOMID.RO</h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Backend CMS</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>Client: <strong>Denumire</strong></h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Branding inovator</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>Client: <strong>Denumire</strong></h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Branding inovator</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>Client: <strong>Denumire</strong></h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Branding inovator</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<header>
+					<h4>Client: <strong>Denumire</strong></h4>
+					<div class="servicii-portofoliu">
+						<img src="images/design.png">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</header>
+				<h2>Branding inovator</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+		</section>
+		<section id="contact">
+			<h1>Contactează-mă pentru orice detalii</h1>
+			<div class="row">
+				<div id="contact-info">
+					<h2>Informații de contact:</h2>
+					<p><strong>Adresa poștală</strong></p>
+					<p>Strada Independenței nr. 10, ap. 23, Alba Iulia, jud. Alba.</p>
+					<p><strong>Tel.:</strong> 0723241421</p>
+					<p><strong>Email.:</strong> ciprian@cucu.ro</p>
+					<p><strong>Social media:</strong></p>
+					<div class="social-media">
+						<img src="images/design.png">
+						<img src="images/design.png">
+						<img src="images/design.png">
+					</div>
+				</div>
+				<div id="contact-form" class="form-style-2">
+					<h2>Scrie un mesaj aici:</h2>
+					<form>
+						<label for="field1"><span>Nume <span class="required">*</span></span>
+							<input type="text" class="input-field" name="field1" value="" />
+						</label>
+						<label for="field2"><span>Email <span class="required">*</span></span>
+							<input type="text" class="input-field" name="field2" value="" />
+						</label>
+
+						<label for="field4"><span>Subiect</span>
+							<select name="field4" class="select-field">
+								<option value="general">General</option>
+								<option value="web">Dezvoltare web</option>
+								<option value="design">Design grafic</option>
+							</select>
+						</label>
+						
+						<label for="field5">
+							<span>Mesaj <span class="required">*</span></span>
+							<textarea name="field5" class="textarea-field"></textarea>
+						</label>
+
+						<input type="submit" value="Trimite" />
+							
+					</form>
+				</div>
+			</div>
+
+		</section>
+
+		<footer>
+			<img src="images/design.png"> <!--site logo -->
+			<p>© 2021. Design și implementare: Prenume Nume. Toate drepturile rezervate.</p>
+		</footer>
+	</div>
+
+
+</body>
+</html>

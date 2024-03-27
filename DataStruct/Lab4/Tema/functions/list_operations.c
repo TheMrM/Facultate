@@ -1,33 +1,6 @@
-#include <stdio.h>
+#include "node.h"
 #include <stdlib.h>
-
-typedef struct Node {
-    int info;
-    struct Node *next;
-} Node;
-
-Node* createList(int n) {
-    Node *head = NULL, *last = NULL;
-    for (int i = 0; i < n; i++) {
-        int value;
-        scanf("%d", &value);
-        Node *newNode = (Node *)malloc(sizeof(Node));
-        if (newNode == NULL) {
-            fprintf(stderr, "Nu sa alocat memorie\n");
-            exit(1);
-        }
-        newNode->info = value;
-        newNode->next = NULL;
-        if (head == NULL) {
-            head = newNode;
-            last = newNode;
-        } else {
-            last->next = newNode;
-            last = newNode;
-        }
-    }
-    return head;
-}
+#include <stdio.h>
 
 void stergeMinMax(Node **head) {
     if (*head == NULL) {
@@ -118,20 +91,9 @@ void insertAfterPrime(Node **head) {
     }
 }
 
-Node* createNode(int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        fprintf(stderr, "Nu sa putut aloca memorie\n");
-        exit(1);
-    }
-    newNode->info = value;
-    newNode->next = NULL;
-    return newNode;
-}
-
 
 void insertBefore(Node** head, Node* prev, Node* current, int value) {
-    Node* newNode = currentNode(value);
+    Node* newNode = createNode(value);
     if (prev == NULL) {
         newNode->next = *head;
         *head = newNode;
@@ -198,15 +160,4 @@ void readOrInputList() {
     for (int i = 0; i < count; i++) {
         printf("%d\n", numbers[i]);
     }
-}
-
-
-int main() {
-    int n;
-    printf("Introdu numarul de elemente in lista: ");
-    scanf("%d", &n);
-
-    Node *list = createList(n);
-
-    return 0;
 }
