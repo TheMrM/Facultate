@@ -106,6 +106,61 @@ void inserareLista(struct Node **head,struct Node **tail, int pozitie, int val) 
     }
 };
 
+void stergereLista(struct Node **head, struct Node **tail) {
+    struct Node *current = *head;
+    while (current != NULL) {
+        struct Node *next = current->next;
+        free(current);
+        current = next;
+    }
+    *head = NULL;
+    *tail = NULL;
+}
+
+void stergerePrimElement(struct Node **head, struct Node **tail) {
+    if (*head == NULL) return;
+    struct Node *temp = *head;
+    *head = (*head)->next;
+    if (*head == NULL) {
+        *tail = NULL;
+    } else {
+        (*head)->prev = NULL;
+    } free(temp);
+}
+
+void stergereUltimElement(struct Node **tail, struct Node **head) {
+    if (*tail == NULL) return;
+    struct Node *temp = *tail;
+    *tail = (*tail)->prev;
+    if (*tail == NULL) {
+        *head = NULL;
+    } else {
+        (*tail)->next = NULL;
+    }
+    free(temp);
+}
+
+void stergereElementLista(struct Node **head, struct Node **tail, int val) {
+    struct Node *temp = *head;
+    while (temp != NULL) {
+        if (temp->info == val) {
+            if (temp->prev != NULL) {
+                temp->prev->next = temp->next;
+            } else {
+                *head = temp->next;
+            }
+            if (temp->next != NULL) {
+                temp->next->prev = temp->prev;
+            } else {
+                *tail = temp->prev;
+            }
+            free(temp);
+            return;
+        }
+        temp = temp->next;
+    }
+}
+
 int gasestePozitie(struct Node *head, int val) {
     int pos = 1;
     struct Node *current = head;
@@ -123,18 +178,27 @@ int main() {
     struct Node *head = NULL, *tail = NULL;
 
     citireLista(&head, &tail);
+    printf("Initial list: ");
     afisareLista(head);
 
     inserareInceput(&head, 3);
+    printf("After insertion at the beginning 3: ");
+    afisareLista(head);
     inserareInceput(&head, 8);
+    printf("After insertion at the beginning 8: ");
+    afisareLista(head);
     inserareInceput(&head, 9);
-
+    printf("After insertion at the beginning 9: ");
     afisareLista(head);
 
-    inserareSfarsit(&tail, 0);
-    inserareSfarsit(&tail, 0);
-    inserareSfarsit(&tail, 0);
-
+    inserareSfarsit(&tail, 4);
+    printf("After insertion at the end 4: ");
+    afisareLista(head);
+    inserareSfarsit(&tail, 2);
+    printf("After insertion at the end 2: ");
+    afisareLista(head);
+    inserareSfarsit(&tail, 1);
+    printf("After insertion at the end 1: ");
     afisareLista(head);
 
     int locatia93 = gasestePozitie(head, 93);
@@ -142,7 +206,13 @@ int main() {
         inserareLista(&head, &tail,locatia93, 15);
     }
 
+    printf("After inserting 15 after 93: ");
     afisareLista(head);
+
+    stergereLista(&head, &tail);
+    printf("After cleaning the list: ");
+    afisareLista(head);
+
 
     return 0;
 }
