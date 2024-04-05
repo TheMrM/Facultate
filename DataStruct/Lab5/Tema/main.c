@@ -54,32 +54,41 @@ struct Node* createCircularList(int n) {
     return head;
 }
 
-void eliminareNoduriPanaLaUltim(struct Node **head) {
-    if(!head || !*head || (*head)->next == *head) {
+void eliminareNoduriPanaLaUltim(struct Node **head, int m) {
+    if (!head || !*head) {
         return;
     }
 
-    struct Node *current = (*head)->next;
-    while (current != *head) {
-        struct Node *temp = current;
-        current = current->next;
-        if (temp != *head) {
-            free(temp);
+    struct Node *current = *head;
+    struct Node *prev = NULL;
+
+    while (current->next != current) {
+        for (int i = 1; i < m; i++) {
+            prev = current;
+            current = current->next;
         }
+
+        prev->next = current->next;
+        if (current == *head) {
+            *head = prev->next;
+        }
+        free(current);
+        current = prev->next;
     }
-    (*head)->next = *head;
 }
 
 int main() {
-    int n;
-    printf("How many elements do you want your list to have: :");
+    int n, m;
+    printf("How many elements do you want your list to have: ");
     scanf("%d", &n);
+    printf("Enter the step count for elimination: ");
+    scanf("%d", &m);
 
     struct Node* initialList = createCircularList(n);
     printf("Original list: ");
     afisareLista(initialList);
 
-    eliminareNoduriPanaLaUltim(&initialList);
+    eliminareNoduriPanaLaUltim(&initialList, m);
     printf("List after removals: ");
     afisareLista(initialList);
 
