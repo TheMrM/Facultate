@@ -19,7 +19,7 @@
 		
 		<!-- navigare desktop -->
 		<header>
-			<img src="images/design.png"> <!--site logo -->
+			<img src="images/logo.png"> <!--site logo -->
 			<nav id="desktop">
 				<ul>
 					<li><a href="#wrapper">Home</a></li>
@@ -44,8 +44,8 @@
 		<!-- hero section -->
 		<section id="hero">
 			<div id="content-hero">
-				<h1>Ciprian Cucu</h1>
-				<h2>Programator & designer web.</h2><h2> Full stack dev - HTML5, CSS3, JS, PHP & MySql. Python wrangler, framework slahser, cat enthusiast. </h2>
+				<h1>Mircea Maier</h1>
+				<h2>Programator web & security auditor</h2><h2> Full stack dev with a keen interest in online security and sailer on the dark-web</h2>
 			</div>
 			<div id="image-hero">
 				&nbsp;
@@ -89,12 +89,21 @@ if ($conn->connect_error) {
         <h1>Portofoliu</h1>
         <section id="portofoliu">
             <?php
-            $sql = "SELECT client_name, title, description FROM projects";
+            $sql = "SELECT client_name, title, description, image FROM projects";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo '<article><header><h4>' . $row["client_name"] . '</h4><div class="servicii-portofoliu"><img src="images/design.png"></div></header><h2>' . $row["title"] . '</h2><p>' . $row["description"] . '</p></article>';
+                    $imagePath = htmlspecialchars($row["image"]);
+                    echo '<article><header><h4>' . htmlspecialchars($row["client_name"]) . '</h4>';
+
+                    if (!empty($imagePath)) {
+                        echo '<div class="servicii-portofoliu"><img src="' . $imagePath . '" alt="Project Image" style="max-width:100px; max-height:100px;"></div>';
+                    } else {
+                        echo '<div class="servicii-portofoliu"><img src="path/to/default/image.png" alt="Default Image" style="max-width:100px; max-height:100px;"></div>';
+                    }
+
+                    echo '</header><h2>' . htmlspecialchars($row["title"]) . '</h2><p>' . htmlspecialchars($row["description"]) . '</p></article>';
                 }
             } else {
                 echo "0 proiecte găsite";
@@ -107,14 +116,13 @@ if ($conn->connect_error) {
 				<div id="contact-info">
 					<h2>Informații de contact:</h2>
 					<p><strong>Adresa poștală</strong></p>
-					<p>Strada Independenței nr. 10, ap. 23, Alba Iulia, jud. Alba.</p>
-					<p><strong>Tel.:</strong> 0723241421</p>
-					<p><strong>Email.:</strong> ciprian@cucu.ro</p>
-					<p><strong>Social media:</strong></p>
+					<p>Strada Tulnicului, nr. 48, Alba Iulia, jud. Alba.</p>
+					<p><strong>Tel.:</strong> 0728391627</p>
+					<p><strong>Email.:</strong> mircea@maier.ro</p>
+					<p><strong>Can be found @</strong></p>
 					<div class="social-media">
-						<img src="images/design.png">
-						<img src="images/design.png">
-						<img src="images/design.png">
+						<img src="images/linkedin.png">
+						<img src="images/github.jpeg">
 					</div>
 				</div>
 				<div id="contact-form" class="form-style-2">
@@ -149,13 +157,21 @@ if ($conn->connect_error) {
 		</section>
 
 		<footer>
-			<img src="images/design.png"> <!--site logo -->
-			<p>© 2021. Design și implementare: Prenume Nume. Toate drepturile rezervate.</p>
+			<img src="images/logo.png"> <!--site logo -->
+			<p>© <span id="current-year"></span>. Design și implementare: Mircea Maier. Toate drepturile rezervate.</p>
 		</footer>
 	</div>
 <?php
 $conn->close();
 ?>
+<script>
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+
+    document.getElementById('current-year').textContent = `${year}-${month}-${date}`;
+</script>
 
 </body>
 </html>
