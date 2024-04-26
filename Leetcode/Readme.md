@@ -47,6 +47,9 @@ Dacă doriți să contribuiți cu soluții la problemele LeetCode, vă rugăm s�
 - [cppreference.com](https://en.cppreference.com/w/cpp): O resursă excelentă pentru documentația limbajului C++.
 - [Learn C++](https://www.learn-c.org/): Un site web interactiv care vă ajută să învățați C++.
 - [Learn C](https://www.learn-c.org/): Un site web interactiv care vă ajută să învățați limbajul C.
+- [W3Schools](https://www.w3schools.com/): O resursă bogată pentru învățarea fundamentelor programării, inclusiv C și C++.
+- [PBInfo](https://www.pbinfo.ro/): Un site unde elevii pot învăța algoritmica și pot exersa rezolvarea problemelor de programare.
+- [GeeksforGeeks](https://www.geeksforgeeks.org/): O platformă pentru învățarea informaticii și pregătirea pentru interviuri tehnice, cu o varietate largă de resurse pentru C și C++.
 
 Spor la rezolvat probleme și la învățat programare!
 (Good luck with problem-solving and learning programming!)
