@@ -2,32 +2,39 @@
 #include <math.h>
 
 int main() {
+    double AB, BC, AC, p, A, hA, hB, hC;
 
-    double a, b, c;
-
-    if (scanf("%lf", &a) != 1 || scanf("%lf", &b) != 1 || scanf("%lf", &c) != 1) return 1;
-
-    if (a + b <= c || a + c <= b || b + c <= a) {
-        printf("Imposibil\n");
-        return 0;
+    // Citirea laturilor triunghiului
+    if (scanf("%lf %lf %lf", &AB, &BC, &AC) != 3) {
+        return -1;
     }
 
+    // Verificam daca laturile citite sunt valide
+    if (AB + BC >= AC && BC + AC >= AB && AC + AB >= BC) {
+        // Calculam semiperimetrul triunghiului
+        p = (AB + BC + AC) / 2;
 
+        // Calculam aria triunghiului
+        A = sqrt(p * (p - AB) * (p - BC) * (p - AC));
 
-    double s = (a + b + c) / 2.0;
-    
-    double aria = sqrt(s * (s - a) * (s - b) * (s - c));
+        // Calculam inaltimile triunghiului
+        hA = (2 * A) / AB;
+        hB = (2 * A) / BC;
+        hC = (2 * A) / AC;
 
-    if ( aria == 0 ) {
+        // Convertim inaltimile la valori cu doua zecimale
+        int h1 = (int)(hA * 100);
+        int h2 = (int)(hB * 100);
+        int h3 = (int)(hC * 100);
+
+        // Afisam inaltimile triunghiului
+        printf("%d.%02d ", h1 / 100, h1 % 100);
+        printf("%d.%02d ", h2 / 100, h2 % 100);
+        printf("%d.%02d\n", h3 / 100, h3 % 100);
+    } else {
+        // Afisam mesajul de eroare
         printf("Imposibil\n");
-        return 0;
     }
 
-    double h_a = (2 * aria) / a;
-    double h_b = (2 * aria) / b;
-    double h_c = (2 * aria) / c;
-
-    printf("%.2f %.2f %.2f\n", h_a, h_b, h_c);
-
-    return 0;
+return 0;
 }

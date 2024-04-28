@@ -2,22 +2,36 @@
 #include <math.h>
 
 int main() {
-    double a, b, c;
-    if (scanf("%lf", &a) != 1 || scanf("%lf", &b) != 1 || scanf("%lf", &c) != 1) return 1;
 
-    if (a + b <= c || a + c <= b || b + c <= a) {
-        printf("Imposibil");
-        return 0;
+    double a, b, c, p;
+
+    // Citirea coeficientilor triunghiului
+    if (scanf("%lf %lf %lf", &a, &b, &c) != 3) {
+        return 1;
     }
 
-    double l_a = sqrt((b * c * (1 - ((a * a) / ((b + c) * (b + c))))));
-    double l_b = sqrt((a * c * (1 - ((b * b) / ((a + c) * (a + c))))));
-    double l_c = sqrt((a * b * (1 - ((c * c) / ((a + b) * (a + b))))));
+    // Verificam daca pot forma un triunghi
+    if (a + b >= c && b + c >= a && a + c >= b) {
+        // Calculam semiperimetrul
+        p = (a + b + c) / 2;
 
-    l_a = round(l_a * 100) / 100;
-    l_b = round(l_b * 100) / 100;
-    l_c = round(l_c * 100) / 100;
+        // Calculam lungimile bisectoarelor
+        double bA = sqrt((4 * b * c) / ((b + c) * (b + c)) * p * (p - a));
+        double bB = sqrt((4 * a * c) / ((a + c) * (a + c)) * p * (p - b));
+        double bC = sqrt((4 * a * b) / ((a + b) * (a + b)) * p * (p - c));
 
-    printf("%.2lf %.2lf %.2lf", l_a, l_b, l_c);
-return 0;
+        // Convertim in intregi dupa multiplicare cu 100 ca sa trunchiem inloc sa rotunjim
+        int b1 = (int) (bA * 100);
+        int b2 = (int) (bB * 100);
+        int b3 = (int) (bC * 100);
+
+        // Afisam bisectoarele cu 2 zecimale
+        printf("%d.%d%d ", b1 / 100, (b1 / 10) % 10, b1 % 10);
+        printf("%d.%d%d ", b2 / 100, (b2 / 10) % 10, b2 % 10);
+        printf("%d.%d%d\n", b3 / 100, (b3 / 10) % 10, b3 % 10);
+    } else {
+        printf("Imposibil\n");
+    }
+
+    return 0;
 }

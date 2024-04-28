@@ -1,20 +1,27 @@
 #include <stdio.h>
-#include <math.h>
+
+#define PI 3.14159
 
 int main() {
-    
-    int r;
-    double A, V;
-    if (scanf("%d", &r) != 1) {
-        return 1;
+    long long r, A, V;
+    long long a, v;
+
+    // Citim raza sferei
+    if (scanf("%lld", &r) != 1) {
+        return -1;
     }
 
-    A = 4 * M_PI * r * r;
-    V = (4.0/3) * M_PI * r * r * r;
+    // Calculam aria si volumul sferei
+    A = 4 * PI * r * r;
+    V = 4 * PI * r * r * r / 3;
 
-    A = floor(A * 100) / 100;
-    V = floor(V * 100) / 100;
+    // Multiplicam cu 100 pentru a converti in long long ca sa trunchiem partea zecimala
+    a = (long long)(A * 100);
+    v = (long long)(V * 100);
 
-    printf("%.2f %.2f\n", A, V);
+    // Afisam aria si volumul
+    printf("%lld.%lld%lld ", a / 100, (a / 10) % 10, a % 10);
+    printf("%lld.%lld%lld\n", v / 100, (v / 10) % 10, v % 10);
+
     return 0;
 }
