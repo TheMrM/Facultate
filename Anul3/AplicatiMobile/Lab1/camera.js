@@ -2,8 +2,8 @@ const video = document.getElementById("video");
 
 let imageCounter = 1;
 video.addEventListener('playing', function () {
-    video.addEventListener("touchstart", capteaza);
-    video.addEventListener("mousedown", capteaza);
+    video.addEventListener("touchstart", capture);
+    video.addEventListener("mousedown", capture);
 });
 
 function on_cam_success(stream) {
@@ -17,7 +17,7 @@ function on_cam_error(err) {
 const constraints = {audio: false, video: true};
 navigator.mediaDevices.getUserMedia(constraints).then(on_cam_success).catch(on_cam_error);
 
-function capteaza() {
+function capture() {
     const c = document.getElementById("canvas");
     c.width = video.videoWidth;
     c.height = video.videoHeight;
@@ -41,6 +41,12 @@ function downloadImage() {
 }
 
 document.querySelector('button').addEventListener('click', function () {
-    capteaza();
+    capture();
     setTimeout(downloadImage, 100);
+
+    setTimeout(function () {
+        window.addEventListener('keydown', function (e) {
+            console.log(e.key, e.code);
+        });
+    }, 9000);
 });
