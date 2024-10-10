@@ -1,37 +1,46 @@
-document.addEventListener("touchstart", on_touch);
-document.addEventListener("mousedown", on_touch);
+// Initialize variables for buttons and text display
+const startButton = document.getElementById("start-btn");
+const stopButton = document.getElementById("stop-btn");
+const textElement = document.getElementById("text");
 
-let recognition;
-if ('webkitSpeechRecognition' in window) {
-    recognition = new webkitSpeechRecognition();
-}
+// Check if annyang is available
+if (annyang) {
+    // Set the language to Romanian (can be adjusted as needed)
+    annyang.setLanguage("ro");
 
-let recognition_start = false;
-recognition.lang = "ro";
-function on_touch() {
-    if(recognition_start) {
-        recognition.stop();
-        recognition_start = false;
-    } else {
-        recognition.start();
-        recognition_start = true;
-    }
-}
-function onend() {
-    recognition.stop();
-    recognition_start = false;
-}
-recognition.onend = onend;
-recognition.onsoundend = onend;
-recognition.onspeechend = onend;
+    // Define a simple command to handle spoken words
+    let commands = {
+        '*text': function(text) {
+            textElement.innerHTML += `Ati rostit cuvantul: <strong>${text}</strong><br>`;
+        }
+    };
 
-recognition.onresult = function (e) {
-    let textElement = document.getElementById("text");
-    if (textElement !== null) {
-        let resultIndex = e.resultIndex;
-        let transcript = e.results[resultIndex][0].transcript;
-        let confidence = e.results[resultIndex][0].confidence;
+    // Add the defined commands to annyang
+    annyang.addCommands(commands);
 
-        textElement.innerHTML += `Ati rostit cuvantul: <strong>${transcript}</strong>, acuratete: ${confidence.toFixed(2)}<br>`;
-    }
+    // Start and stop event handlers
+    startButton.addEventListener("click", function() {
+        annyang.start(); // Start listening
+        startButton.disabled = true; // Disable start button
+        stopButton.disabled = false; // Enable stop button
+        textElement.innerHTML += `<p style="color: green;"><strong>Recognition Started...</strong></p>`;
+    });
+
+    stopButton.addEventListener("click", function() {
+        annyang.abort(); // Stop listening
+        startButton.disabled = false; // Enable start button
+        stopButton.disabled = true; // Disable stop button
+        textElement.innerHTML += `<p style="color: red;"><strong>Recognition Stopped.</strong></p>`;
+    });
+
+    // Error handler (optional)
+    annyang.addCallback('error', function(error) {
+        textElement.innerHTML += `<p style="color: red;"><strong>Error:</strong> ${error.error}</p>`;
+        console.error("Annyang Error: ", error);
+    });
+
+} else {
+    // Display a message if the browser doesn't support speech recognition
+    textElement.innerHTML = "<strong>Your browser does not support Speech Recognition.</strong>";
+    console.error("Annyang is not supported in this browser.");
 }

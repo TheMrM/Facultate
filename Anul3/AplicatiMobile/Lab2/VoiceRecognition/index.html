@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TextToSpeechConverter</title>
+    <title>Text to Speech Converter</title>
+    <!-- Include Annyang.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-<h2>Voice Recognition Example</h2>
-<p>Tap or click anywhere on the page to start or stop voice recognition.</p>
-<p id="text" style="font-size: 18px; color: #333;"></p>
+<h1>Voice Recognition with Start and Stop Buttons</h1>
+<p>Click <strong>"Start"</strong> to begin voice recognition and <strong>"Stop"</strong> to end it.</p>
+<button id="start-btn">Start</button>
+<button id="stop-btn" disabled>Stop</button>
+<div id="text"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
