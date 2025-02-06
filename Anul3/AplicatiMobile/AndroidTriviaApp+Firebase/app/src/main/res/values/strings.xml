@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">TextApp</string>
+    <string name="firebase_test_app">Firebase Test App</string>
+    <string name="logout">Logout</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="send">Send</string>
+    <string name="play_trivia_game">Play Trivia Game</string>
+    <string name="welcome">Welcome!</string>
+    <string name="todo">TODO</string>
+    <string name="select_difficulty">Select Difficulty</string>
+    <string name="easy">Easy</string>
+    <string name="_20_seconds_per_question_1x_points">20 seconds per question • 1x points</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="_15_seconds_per_question_1_5x_points">15 seconds per question • 1.5x points</string>
+    <string name="_10_seconds_per_question_2x_points">10 seconds per question • 2x points</string>
+    <string name="go_back">Go Back</string>
+    <string name="security_quiz">Security Quiz</string>
+    <string name="start_quiz">Start Quiz</string>
+</resources>

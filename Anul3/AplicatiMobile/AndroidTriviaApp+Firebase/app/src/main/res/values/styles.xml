@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base button style -->
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:padding">16dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="elevation">4dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Primary button style -->
+    <style name="AppButton.Primary">
+        <item name="backgroundTint">@color/primary_button_color</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="rippleColor">@color/primary_button_ripple</item>
+    </style>
+
+    <!-- Secondary button style -->
+    <style name="AppButton.Secondary">
+        <item name="backgroundTint">@color/secondary_button_color</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="rippleColor">@color/secondary_button_ripple</item>
+    </style>
+
+    <!-- Outlined button style -->
+    <style name="AppButton.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:padding">16dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="strokeColor">@color/primary_button_color</item>
+        <item name="strokeWidth">@dimen/button_stroke_width</item>
+        <item name="android:textColor">@color/primary_button_color</item>
+        <item name="rippleColor">@color/primary_button_ripple</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="dialogCornerRadius">8dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

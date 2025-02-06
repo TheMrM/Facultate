@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="category_button_height">72dp</dimen>
+    <dimen name="button_spacing">16dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="button_elevation">4dp</dimen>
+    <dimen name="button_padding">16dp</dimen>
+    <dimen name="icon_padding">12dp</dimen>
+    <dimen name="card_stroke_normal">1dp</dimen>
+    <dimen name="card_stroke_selected">2dp</dimen>
+    <dimen name="card_elevation_normal">2dp</dimen>
+    <dimen name="card_elevation_selected">8dp</dimen>
+    <dimen name="button_stroke_width">2dp</dimen>
+</resources>

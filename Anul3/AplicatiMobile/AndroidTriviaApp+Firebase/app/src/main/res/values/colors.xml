@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Button Colors -->
+    <color name="primary_button_color">#2196F3</color>
+    <color name="primary_button_ripple">#1976D2</color>
+    <color name="secondary_button_color">#FF4081</color>
+    <color name="secondary_button_ripple">#F50057</color>
+    <color name="outline_button_stroke">#2196F3</color>
+    <color name="outline_button_text">#2196F3</color>
+    <color name="outline_button_ripple">#1976D2</color>
+
+    <!-- Ripple Color -->
+    <color name="ripple_color">#33000000</color>
+
+    <!-- Category Colors -->
+    <color name="category_programming">#4CAF50</color>
+    <color name="category_networking">#2196F3</color>
+    <color name="category_security">#F44336</color>
+    <color name="category_random">#9C27B0</color>
+
+    <!-- Difficulty Colors -->
+    <color name="difficulty_easy">#4CAF50</color>
+    <color name="difficulty_medium">#2196F3</color>
+    <color name="difficulty_hard">#F44336</color>
+
+    <!-- Notification Colors -->
+    <color name="success_green">#4CAF50</color>
+    <color name="error_red">#F44336</color>
+    <color name="warning_yellow">#FFC107</color>
+</resources>
