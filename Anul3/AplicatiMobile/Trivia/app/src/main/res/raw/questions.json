@@ -1,0 +1,77 @@
+[
+  {
+    "question": "What does the acronym 'VPN' stand for?",
+    "options": ["Virtual Private Network", "Verified Private Network", "Virtual Public Network", "Verified Public Node"],
+    "answer": "Virtual Private Network"
+  },
+  {
+    "question": "Which of the following is a strong password?",
+    "options": ["123456", "Password1", "qwerty123", "Qx!7t@93Lw"],
+    "answer": "Qx!7t@93Lw"
+  },
+  {
+    "question": "What is the purpose of a firewall in cybersecurity?",
+    "options": ["Encrypt data", "Prevent unauthorized access", "Backup data", "Optimize network speed"],
+    "answer": "Prevent unauthorized access"
+  },
+  {
+    "question": "Which is an example of a phishing attack?",
+    "options": ["Sending a fake email to steal login credentials", "Using a VPN to encrypt traffic", "Installing antivirus software", "Updating operating systems regularly"],
+    "answer": "Sending a fake email to steal login credentials"
+  },
+  {
+    "question": "What is a Trojan horse in cybersecurity?",
+    "options": ["A strong password", "A secure communication protocol", "A type of malware disguised as legitimate software", "A phishing technique"],
+    "answer": "A type of malware disguised as legitimate software"
+  },
+  {
+    "question": "What is the main function of encryption?",
+    "options": ["To speed up data transfer", "To hide files", "To convert data into unreadable format", "To compress files"],
+    "answer": "To convert data into unreadable format"
+  },
+  {
+    "question": "What is two-factor authentication (2FA)?",
+    "options": ["A single password login", "Two-step verification process for extra security", "A security protocol for firewalls", "An advanced data encryption method"],
+    "answer": "Two-step verification process for extra security"
+  },
+  {
+    "question": "Which of these is considered a social engineering attack?",
+    "options": ["Exploiting software vulnerabilities", "Guessing a weak password", "Tricking someone into revealing confidential information", "Using a brute force attack"],
+    "answer": "Tricking someone into revealing confidential information"
+  },
+  {
+    "question": "What is ransomware?",
+    "options": ["A type of firewall", "A program that encrypts files and demands payment to unlock them", "A phishing email", "A software update"],
+    "answer": "A program that encrypts files and demands payment to unlock them"
+  },
+  {
+    "question": "What does HTTPS stand for?",
+    "options": ["Hypertext Transfer Protocol Secure", "High Transfer Protection System", "Hypertext Transfer Protocol Service", "Host Transfer Protocol Secure"],
+    "answer": "Hypertext Transfer Protocol Secure"
+  },
+  {
+    "question": "What is a DDoS attack?",
+    "options": ["A firewall protocol", "A type of malware", "A distributed attack to overload a system", "An encrypted file transfer"],
+    "answer": "A distributed attack to overload a system"
+  },
+  {
+    "question": "Which of these is NOT a type of malware?",
+    "options": ["Spyware", "Adware", "Firewall", "Ransomware"],
+    "answer": "Firewall"
+  },
+  {
+    "question": "What is a zero-day vulnerability?",
+    "options": ["A vulnerability discovered on the day it is exploited", "An attack using phishing emails", "An encryption method", "A secure software feature"],
+    "answer": "A vulnerability discovered on the day it is exploited"
+  },
+  {
+    "question": "What is the primary purpose of penetration testing?",
+    "options": ["To monitor network traffic", "To find security vulnerabilities", "To encrypt sensitive data", "To train employees in cybersecurity"],
+    "answer": "To find security vulnerabilities"
+  },
+  {
+    "question": "Which tool is commonly used for ethical hacking?",
+    "options": ["Nmap", "Microsoft Word", "Google Chrome", "Spotify"],
+    "answer": "Nmap"
+  }
+]
